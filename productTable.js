@@ -13,12 +13,12 @@ var db = mysql.createConnection({
 })
 
 db.connect(() => {
-    console.log('Product DB Connect!')
+    // console.log('Product DB Connect!')
 })
 
 
 //Get All Data
-router.get('/data', (req, res) => {
+router.get('/products', (req, res) => {
     var dbStat = 'select * from products'
     db.query(dbStat, (error, output) => {
         if (error) {
@@ -32,7 +32,7 @@ router.get('/data', (req, res) => {
 
 
 //Get data by ID
-router.get('/data/:id', (req, res) => {
+router.get('/products/:id', (req, res) => {
     var dbStat = 'select * from products where id = ?'
     db.query(dbStat, req.params.id, (error, output) => {
         if (error) {
@@ -45,7 +45,7 @@ router.get('/data/:id', (req, res) => {
 })
 
 //Post data
-router.post('/data', (req, res) => {
+router.post('/products', (req, res) => {
     var dbStat = 'insert into products set ?'
     var data = {
         nama: req.body.nama,
@@ -70,7 +70,7 @@ router.post('/data', (req, res) => {
         }
     })
     //UPDATE
-    router.put('/data/:id', (req, res) => {
+    router.put('/products/:id', (req, res) => {
         var dbStat = 'update products set ? where id = ?'
         var data = {
             nama: req.body.nama,
@@ -98,7 +98,7 @@ router.post('/data', (req, res) => {
     })
 
     //Delete data by id
-    router.delete('/data/id:id', (id, res) => {
+    router.delete('/products/id:id', (id, res) => {
         var dbStat = 'delete from products where id = ?'
         db.query(dbStat, req.params.id, (error, output) => {
             if (error) {

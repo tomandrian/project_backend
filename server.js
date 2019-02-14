@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
     res.send('<h1>tes express</h1>')
 })
 
-
-app.listen(8000, () => {
-    console.log('Server Database aktif di 8000')
+var port = 8000
+app.listen(port, () => {
+    console.log('Server Database aktif di port ' + port)
 })
